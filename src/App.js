@@ -1,25 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+import {useState, useEffect} from 'react'
+import { getChamps, test } from './network'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const ROUTE_CHAMPIONS = 'http://ddragon.leagueoflegends.com/cdn/12.17.1/data/en_US/champion.json'
+const ROUTE_CHAMPION = champ => `http://ddragon.leagueoflegends.com/cdn/12.17.1/data/en_US/champion/${champ}.json`
+const ROUTE_SKIN = (champ, num) => `http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champ}_${num}.jpg`
+
+export const App = () => {
+  useEffect(() => {
+    (async () => {
+      const champs = await getChamps()
+    })()
+  }, [])
+  return ''
 }
 
 export default App;
